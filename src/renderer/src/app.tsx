@@ -1,17 +1,23 @@
-import Versions from './components/versions'
-import Clock from './components/clock'
 
-function App(): JSX.Element {
+
+// 创建一个路由配置示例
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from './home';
+import About from './about';
+
+// 示例组件 - 在实际应用中你会导入真正的组件
+// const Home = () => <div>首页</div>;
+// const About = () => <div>关于页面</div>;
+
+const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-lg">
-        <Clock />
-      </div>
-      <div className="mt-8 opacity-50 hover:opacity-100 transition-opacity duration-300">
-        <Versions />
-      </div>
-    </div>
-  )
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </HashRouter>
+  );
 }
 
-export default App
+export default App;
